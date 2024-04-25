@@ -1,0 +1,21 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Features\Dvds\Commands\CreateDvd\" />
+    <Folder Include="Features\Dvds\Commands\DeleteDvd\" />
+    <Folder Include="Features\Dvds\Commands\UpdateDvd\" />
+    <Folder Include="Features\Dvds\Commands\ReturnDvd\" />
+    <Folder Include="Features\Dvds\Commands\RentDvd\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Domain\MoviesRental.Domain\MoviesRental.Domain.csproj" />
+  </ItemGroup>
+
+</Project>
