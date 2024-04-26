@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\Application\MoviesRental.Query.Application\MoviesRental.Query.Application.csproj" />
+  </ItemGroup>
+
 </Project>
