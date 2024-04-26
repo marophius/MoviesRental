@@ -8,6 +8,7 @@ namespace MoviesRental.Core.Mediator
 {
     public interface IMediatorHandler
     {
-        Task<IResponse> Send<TC>(TC command) where TC : ICommand;
+        Task<IResponse> SendCommand<TC>(TC command) where TC : ICommand;
+        Task<IResponse> SendQuery<TQ>(TQ query) where TQ : IQuery;
     }
 }

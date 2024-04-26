@@ -15,7 +15,6 @@ namespace MoviesRental.Domain.Entities
             string name,
             string surname)
         {
-            CreatedAt = DateTime.Now;
             UpdateName(name);
             UpdateSurname(surname);
 
