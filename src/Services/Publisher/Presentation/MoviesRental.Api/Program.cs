@@ -1,3 +1,5 @@
+using HealthChecks.UI.Client;
+using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Microsoft.EntityFrameworkCore;
 using MoviesRental.Api.Setup;
 using MoviesRental.Infrastructure.Context;
@@ -26,12 +28,17 @@ using (var serviceScope = app.Services.GetRequiredService<IServiceScopeFactory>(
     var context = serviceScope.ServiceProvider.GetService<MoviesRentalWriteContext>();
     var migrations = await context.Database.GetPendingMigrationsAsync();
 
-    if(migrations is not null)
+    if(migrations.Any())
         await context.Database.MigrateAsync();
 }
 
 app.UseAuthorization();
 
 app.MapControllers();
+app.MapHealthChecks("/health", new HealthCheckOptions
+{
+    Predicate = _ => true,
+    ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
+});
 
 app.Run();
