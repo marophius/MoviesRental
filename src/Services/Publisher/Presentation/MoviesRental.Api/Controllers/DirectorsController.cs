@@ -48,7 +48,7 @@ namespace MoviesRental.Api.Controllers
             var response = (CreateDirectorResponse) await _mediator.SendCommand(command, HttpContext.RequestAborted);
 
             if (response is null)
-                return CustomResponse((int)HttpStatusCode.OK, false);
+                return CustomResponse((int)HttpStatusCode.BadRequest, false);
 
             var @event = new DirectorCreatedEvent(response.Id, response.FullName, response.CreatedAt, response.UpdatedAt);
 
