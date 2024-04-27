@@ -16,14 +16,19 @@ namespace MoviesRental.Core.Mediator
             _mediator = mediator;
         }
 
-        public async Task<IResponse> SendCommand<TC>(TC command) where TC : ICommand
+        public async Task<IResponse> SendCommand<TC>(TC command, CancellationToken token) where TC : ICommand
         {
-            return (IResponse)await _mediator.Send(command);
+            return (IResponse)await _mediator.Send(command, token);
         }
 
-        public async Task<IResponse> SendQuery<TQ>(TQ query) where TQ : IQuery
+        public async Task<bool> SendCommandAndReturnBool<TC>(TC command, CancellationToken token) where TC : ICommand
         {
-            return (IResponse)await _mediator.Send(query);
+            return (bool) await _mediator.Send(command, token);
+        }
+
+        public async Task<IResponse> SendQuery<TQ>(TQ query, CancellationToken token) where TQ : IQuery
+        {
+            return (IResponse)await _mediator.Send(query, token);
         }
     }
 }

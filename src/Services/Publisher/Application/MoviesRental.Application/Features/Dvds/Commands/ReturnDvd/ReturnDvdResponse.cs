@@ -1,5 +1,4 @@
-﻿using MediatR;
-using MoviesRental.Core.Mediator;
+﻿using MoviesRental.Core.Mediator;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,5 +7,5 @@ using System.Threading.Tasks;
 
 namespace MoviesRental.Application.Features.Dvds.Commands.ReturnDvd
 {
-    public record ReturnDvdCommand(Guid Id) : ICommand, IRequest<ReturnDvdResponse>;
+    public record ReturnDvdResponse(string Id, DateTime UpdatedAt) : IResponse;
 }

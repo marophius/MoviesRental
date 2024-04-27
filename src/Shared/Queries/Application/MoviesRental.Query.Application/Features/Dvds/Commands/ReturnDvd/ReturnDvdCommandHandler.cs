@@ -12,6 +12,11 @@ namespace MoviesRental.Query.Application.Features.Dvds.Commands.ReturnDvd
     {
         private readonly IDvdsQueryRepository _repository;
 
+        public ReturnDvdCommandHandler(IDvdsQueryRepository repository)
+        {
+            _repository = repository;
+        }
+
         public async Task<bool> Handle(ReturnDvdCommand request, CancellationToken cancellationToken)
         {
             if (string.IsNullOrEmpty(request.Id) || request.UpdatedAt > DateTime.Now)

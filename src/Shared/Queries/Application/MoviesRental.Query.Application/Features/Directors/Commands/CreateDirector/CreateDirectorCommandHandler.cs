@@ -32,7 +32,7 @@ namespace MoviesRental.Query.Application.Features.Directors.Commands.CreateDirec
             if (director is not null)
                 return false;
 
-            director = new Director { Id = request.Id, FullName = request.FullName };
+            director = new Director { Id = request.Id, FullName = request.FullName, CreatedAt = request.CreatedAt, UpdatedAt = request.UpdatedAt };
 
             var result = await _repository.Create(director);
             if(result is null)
