@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace MoviesRental.Application.Features.Dvds.Commands.RentDvd
 {
-    public class RentDvdCommandHandler : IRequestHandler<RentDvdCommand, bool>
+    public class RentDvdCommandHandler : IRequestHandler<RentDvdCommand, RentDvdResponse>
     {
         private readonly IDvdsWriteRepository _repository;
 
@@ -17,18 +17,23 @@ namespace MoviesRental.Application.Features.Dvds.Commands.RentDvd
             _repository = repository;
         }
 
-        public async Task<bool> Handle(RentDvdCommand request, CancellationToken cancellationToken)
+        public async Task<RentDvdResponse> Handle(RentDvdCommand request, CancellationToken cancellationToken)
         {
             if (request.Id == Guid.Empty)
-                return false;
+                return default;
 
             var dvd = await _repository.Get(request.Id);
             if (dvd is null)
-                return false;
+                return default;
 
             dvd.RentCopy();
 
-            return await _repository.Update(dvd);
+            var result = await _repository.Update(dvd);
+
+            if (!result)
+                return default;
+
+            return new RentDvdResponse(dvd.Id.ToString(), dvd.UpdatedAt);
         }
     }
 }

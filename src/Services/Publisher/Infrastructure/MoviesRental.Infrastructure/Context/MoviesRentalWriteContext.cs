@@ -10,6 +10,10 @@ namespace MoviesRental.Infrastructure.Context
 {
     public class MoviesRentalWriteContext : DbContext
     {
+        public MoviesRentalWriteContext()
+        {
+            
+        }
         public MoviesRentalWriteContext(DbContextOptions<MoviesRentalWriteContext> options) : base(options)
         {
 

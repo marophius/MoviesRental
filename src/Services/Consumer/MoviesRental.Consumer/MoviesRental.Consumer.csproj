@@ -7,4 +7,13 @@
     <InvariantGlobalization>true</InvariantGlobalization>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="MassTransit" Version="8.2.1" />
+    <PackageReference Include="MassTransit.RabbitMQ" Version="8.2.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Shared\Queries\Infrastructure\MoviesRental.Query.Infrastructure\MoviesRental.Query.Infrastructure.csproj" />
+  </ItemGroup>
+
 </Project>
