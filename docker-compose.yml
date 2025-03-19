@@ -1,0 +1,40 @@
+services:
+  cachedb:
+    image: redis
+    networks:
+      - movies-rental-network
+  
+  querydb:
+    image: mongo
+    networks:
+      - movies-rental-network
+
+  writedb:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    networks:
+      - movies-rental-network
+  
+  rabbitmq:
+    image: rabbitmq:3-management-alpine
+    networks:
+      - movies-rental-network
+
+  moviesrental.api:
+    image: ${DOCKER_REGISTRY-}moviesrentalapi
+    build:
+      context: .
+      dockerfile: src/Services/Publisher/Presentation/MoviesRental.Api/Dockerfile
+    networks:
+      - movies-rental-network
+
+  moviesrental.consumer:
+    image: ${DOCKER_REGISTRY-}moviesrentalconsumer
+    build:
+      context: .
+      dockerfile: src/Services/Consumer/MoviesRental.Consumer/Dockerfile
+    networks:
+      - movies-rental-network
+
+networks:
+  movies-rental-network:
+    driver: bridge

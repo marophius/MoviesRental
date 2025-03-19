@@ -49,6 +49,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MoviesRental.Query.Infrastr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MoviesRental.Query.Application", "src\Shared\Queries\Application\MoviesRental.Query.Application\MoviesRental.Query.Application.csproj", "{5ABDBB32-A441-4715-A43E-5CA67D997DB9}"
 EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{C063FF92-641C-4291-8291-47EB828ABB2C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -91,6 +93,10 @@ Global
 		{5ABDBB32-A441-4715-A43E-5CA67D997DB9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5ABDBB32-A441-4715-A43E-5CA67D997DB9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5ABDBB32-A441-4715-A43E-5CA67D997DB9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C063FF92-641C-4291-8291-47EB828ABB2C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C063FF92-641C-4291-8291-47EB828ABB2C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C063FF92-641C-4291-8291-47EB828ABB2C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C063FF92-641C-4291-8291-47EB828ABB2C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

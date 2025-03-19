@@ -1,0 +1,52 @@
+services:
+
+  cachedb:
+    container_name: cachedb
+    restart: always
+    ports:
+      - "6379:6379"
+
+  querydb:
+    container_name: querydb
+    restart: always
+    ports:
+      - "27017:27017"
+
+  writedb:
+    container_name: writedb
+    restart: always
+    environment:
+      SA_PASSWORD: "1q2w3e4r@#$"
+      ACCEPT_EULA: "Y"
+    ports:
+      - "1433:1433"
+
+  rabbitmq:
+    container_name: rabbitmq
+    restart: always
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+
+  moviesrental.api:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Docker
+      - ASPNETCORE_HTTP_PORTS=8080
+    ports:
+      - "8000:8080"
+    depends_on:
+      - cachedb
+      - writedb
+      - querydb
+      - rabbitmq 
+
+  moviesrental.consumer:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Docker
+      - ASPNETCORE_HTTP_PORTS=8080
+    ports:
+      - "8001:8080"
+    depends_on:
+      - querydb
+      - rabbitmq 
+
